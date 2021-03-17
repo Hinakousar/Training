@@ -1,0 +1,315 @@
+{
+	"info": {
+		"_postman_id": "a4b38166-1164-4daf-b0a3-8b3d605919e9",
+		"name": "User_Swagger_Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var JsonObject = JSON.parse(responseBody);\r",
+							"var rcode = JsonObject.code\r",
+							"var rtype = JsonObject.type\r",
+							"var rmessage = JsonObject.message\r",
+							"\r",
+							"tests[\"code is 200\"] = (rcode === 200)\r",
+							"tests[\" type is unknown\"] = (rtype === \"unknown\")\r",
+							"tests[\" message is id\"] = (rmessage === pm.environment.get(\"id\"))\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n {\r\n  \"id\": {{id}},\r\n  \"username\": \"{{username}}\",\r\n  \"firstName\": \"{{firstName}}\",\r\n  \"lastName\": \"{{lastName}}\",\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"phone\": \"{{phone}}\",\r\n  \"userStatus\": {{status}}\r\n\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var JsonObject = JSON.parse(responseBody)\r",
+							"var rid = JsonObject.id\r",
+							"var rusername = JsonObject.username\r",
+							"var rfirstName = JsonObject.firstName\r",
+							"var rlastName = JsonObject.lastName\r",
+							"var remail = JsonObject.email\r",
+							"var rpassword = JsonObject.password\r",
+							"var rphone = JsonObject.phone\r",
+							"\r",
+							"\r",
+							"tests[\"id\"] = (rid === +pm.environment.get(\"id\"))\r",
+							"tests[\"username\"] = (rusername ===pm.environment.get (\"username\"))\r",
+							"tests[\"firstname\"] = (rfirstName === pm.environment.get(\"firstName\"))\r",
+							"\r",
+							"tests[\"lastname\"] = (rlastName === pm.environment.get(\"lastName\"))\r",
+							"tests[\"email\"] = (remail === pm.environment.get(\"email\"))\r",
+							"tests[\"password\"] = (rpassword === pm.environment.get(\"password\"))\r",
+							"tests[\"phone\"] = (rphone === pm.environment.get(\"phone\"))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{username}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{username}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var JsonObject = JSON.parse(responseBody);\r",
+							"var rcode = JsonObject.code\r",
+							"var rtype = JsonObject.type\r",
+							"var rmessage = JsonObject.message\r",
+							"\r",
+							"tests[\"code is 200\"] = (rcode === 200)\r",
+							"tests[\" type is unknown\"] = (rtype === \"unknown\")\r",
+							"tests[\" message is id\"] = (rmessage === pm.environment.get(\"id\"))\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n {\r\n  \"id\": {{id}},\r\n  \"username\": \"{{username}}\",\r\n  \"firstName\": \"{{firstName}}1\",\r\n  \"lastName\": \"{{lastName}}\",\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"phone\": \"{{phone}}\",\r\n  \"userStatus\": {{status}}\r\n\r\n}"
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/user/zaki",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"user",
+						"zaki"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read_user Copy 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var JsonObject = JSON.parse(responseBody)\r",
+							"var rid = JsonObject.id\r",
+							"var rusername = JsonObject.username\r",
+							"var rfirstName = JsonObject.firstName\r",
+							"var rlastName = JsonObject.lastName\r",
+							"var remail = JsonObject.email\r",
+							"var rpassword = JsonObject.password\r",
+							"var rphone = JsonObject.phone\r",
+							"\r",
+							"\r",
+							"tests[\"id\"] = (rid === +pm.environment.get(\"id\"))\r",
+							"tests[\"username\"] = (rusername === pm.environment.get (\"username\"))\r",
+							"tests[\"firstname\"] = (rfirstName === pm.environment.get(\"firstName\")+ \"1\")\r",
+							"\r",
+							"tests[\"lastname\"] = (rlastName === pm.environment.get(\"lastName\"))\r",
+							"tests[\"email\"] = (remail === pm.environment.get(\"email\"))\r",
+							"tests[\"password\"] = (rpassword === pm.environment.get(\"password\"))\r",
+							"tests[\"phone\"] = (rphone === pm.environment.get(\"phone\"))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{username}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{username}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var JsonObject = JSON.parse(responseBody);\r",
+							"var rcode = JsonObject.code\r",
+							"var rtype = JsonObject.type\r",
+							"var rmessage = JsonObject.message\r",
+							"\r",
+							"tests[\"code is 200\"] = (rcode === 200)\r",
+							"tests[\" type is unknown\"] = (rtype === \"unknown\")\r",
+							"tests[\" message is username\"] = (rmessage === pm.environment.get(\"username\"))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n {\r\n  \"id\": 0,\r\n  \"username\": \"heena\",\r\n  \"firstName\": \"kouser\",\r\n  \"lastName\": \"user\",\r\n  \"email\": \"user@gmail.com\",\r\n  \"password\": \"hdjhashsa\",\r\n  \"phone\": \"gshsjsjj\",\r\n  \"userStatus\": 0\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/{{username}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{username}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read_user Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var JsonObject = JSON.parse(responseBody);\r",
+							"var rcode = JsonObject.code\r",
+							"var rtype = JsonObject.type\r",
+							"var rmessage = JsonObject.message\r",
+							"\r",
+							"tests[\"code is 1\"] = (rcode === 1)\r",
+							"tests[\" type is error\"] = (rtype === \"error\")\r",
+							"tests[\" message \"] = (rmessage === \"User not found\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/{{username}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{username}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
